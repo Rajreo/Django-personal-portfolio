@@ -1,0 +1,11 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+<h1>நம்மாழ்வார் எழுதிய புத்தகங்கள்  {{ blogs.count }} <!-- blog{{blogs.count|pluralize}} --></h1>
+<br>
+{% for blog in blogs %}
+<h2><a href="{% url 'blog:detail' blog.id %}"><h1>{{ blog.Title }}</h1></a></h2>
+<h4>{{ blog.Date|date:'d M Y' }}</h4>
+<h3>{{ blog.Description|safe|truncatechars:50 }}</h3>
+<br>
+{% endfor %}
+{% endblock %}

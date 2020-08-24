@@ -1,0 +1,29 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+<!--<h1>this is the home page</h1>-->
+{% load static %}
+<div class="row justify-content-center my-3">
+  <div class="col-3">
+    <img src="{% static 'portfolio/Nammazhvar.jpg' %}"class="img-fluid" >
+  </div>
+</div>
+<div class="row justify-content-center mb-3">
+  <div class="col-md-9 text-center">
+    <h2> தமிழ்நாட்டின் முதன்மை இயற்கை அறிவியலாளர்களில் ஒருவர் ஆவார்.</h2>
+  </div>
+</div>
+<!--<a href="{% static 'portfolio/a.pdf' %}">CLick Here to view PDF</a>-->
+<div class="row justify-content-center mx-2 my-2">
+{% for project in projects %}
+    <div class="col-lg-4 col-md-6">
+    <h3>{{ project.title }}</h3>
+    <p> {{ project.description }}</p>
+    <img src="{{ project.image.url }}" height="300">
+    {% if project.url %}
+    <br>
+    < a href="{{ project.url }}">CLick here</a>
+    {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
